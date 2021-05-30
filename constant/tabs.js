@@ -22,7 +22,7 @@ const CustomTab = ({children , onPress }) => (
             width:60,
             height:60,
             borderRadius : 35,
-            backgroundColor:'#eded0e',
+            backgroundColor:'#FFF701',
         }}>
           {children}
         </View>
@@ -57,7 +57,7 @@ const Tabs = () => {
                      style = {{
                          width:30,
                          height : 30,
-                         tintColor : focused ? '#eded0e' : '#64e3d3',
+                         tintColor : focused ? '#FFF701' : '#64e3d3',
                      }}
                     ></Image>
                 </View>
@@ -72,7 +72,7 @@ const Tabs = () => {
                      style = {{
                          width:30,
                          height : 30,
-                         tintColor : focused ? '#eded0e' : '#64e3d3',
+                         tintColor : focused ? '#FFF701' : '#64e3d3',
                      }}
                     ></Image>
                 </View>
@@ -103,7 +103,7 @@ const Tabs = () => {
                      style = {{
                          width:25,
                          height : 25,
-                         tintColor : focused ? '#eded0e' : '#64e3d3',
+                         tintColor : focused ? '#FFF701' : '#64e3d3',
                      }}
                     ></Image>
                 </View>
@@ -118,7 +118,7 @@ const Tabs = () => {
                      style = {{
                          width:25,
                          height : 25,
-                         tintColor : focused ? '#eded0e' : '#64e3d3',
+                         tintColor : focused ? '#FFF701' : '#64e3d3',
                      }}
                     ></Image>
                 </View>
