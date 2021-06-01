@@ -2,6 +2,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet, Text, View , Image , TouchableOpacity } from 'react-native';
 import React from 'react'
 
+
+//Styles
+
+import { Styles , ScreenDisp } from '../assets/style/styles'
+
 //pages
 
 import HomeScreen from './screens/Homescreen';
@@ -22,7 +27,7 @@ const CustomTab = ({children , onPress }) => (
             width:60,
             height:60,
             borderRadius : 35,
-            backgroundColor:'#FFF701',
+            backgroundColor: Styles.PriColor,
         }}>
           {children}
         </View>
@@ -57,7 +62,7 @@ const Tabs = () => {
                      style = {{
                          width:30,
                          height : 30,
-                         tintColor : focused ? '#FFF701' : '#64e3d3',
+                         tintColor : focused ? Styles.PriColor : Styles.SecondaryColor,
                      }}
                     ></Image>
                 </View>
@@ -72,7 +77,7 @@ const Tabs = () => {
                      style = {{
                          width:30,
                          height : 30,
-                         tintColor : focused ? '#FFF701' : '#64e3d3',
+                         tintColor : focused ? Styles.PriColor : Styles.SecondaryColor,
                      }}
                     ></Image>
                 </View>
@@ -86,7 +91,7 @@ const Tabs = () => {
                      style = {{
                          width:30,
                          height : 30,
-                         tintColor : focused ? '#fff' : '#64e3d3',
+                         tintColor : focused ? '#fff' : '#000000',
                      }}
                     ></Image>
             ),
@@ -103,7 +108,7 @@ const Tabs = () => {
                      style = {{
                          width:25,
                          height : 25,
-                         tintColor : focused ? '#FFF701' : '#64e3d3',
+                         tintColor : focused ? Styles.PriColor : Styles.SecondaryColor,
                      }}
                     ></Image>
                 </View>
@@ -118,7 +123,7 @@ const Tabs = () => {
                      style = {{
                          width:25,
                          height : 25,
-                         tintColor : focused ? '#FFF701' : '#64e3d3',
+                         tintColor : focused ? Styles.PriColor : Styles.SecondaryColor,
                      }}
                     ></Image>
                 </View>
@@ -130,7 +135,7 @@ const Tabs = () => {
 
 const style = StyleSheet.create({
       shadow : {
-          shadowColor : '#7F5DF0',
+          shadowColor : Styles.ShadowColor,
           shadowOffset : {
               width : 0,
               height : 10,
