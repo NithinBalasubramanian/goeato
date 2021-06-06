@@ -9,9 +9,11 @@ import { Styles , ScreenDisp } from '../assets/style/styles'
 
 //pages
 
-import HomeScreen from './screens/Homescreen';
+import HomeScreen from './screens/Homescreen'
 import OrderScreen from './screens/Orderscreen'
 import Restaurant from './screens/RestaurantScreen'
+import LikeScreen from './screens/LikeScreen'
+import ProfileScreen from './screens/ProfileScreen'
 
 const Tab = createBottomTabNavigator();
 
@@ -99,7 +101,7 @@ const Tabs = () => {
                 <CustomTab {...props} />
             )
         }}/>
-        <Tab.Screen name="Forth" component={OrderScreen} options={{
+        <Tab.Screen name="Forth" component={LikeScreen} options={{
             tabBarIcon : ({focused}) => (
                 <View style={style.navIcon }>
                     <Image 
@@ -114,7 +116,7 @@ const Tabs = () => {
                 </View>
             ),
         }}/>
-        <Tab.Screen name="Fifth" component={OrderScreen} options={{
+        <Tab.Screen name="Fifth" component={ProfileScreen} options={{
             tabBarIcon : ({focused}) => (
                 <View style={style.navIcon }>
                     <Image 

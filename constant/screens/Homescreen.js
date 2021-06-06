@@ -141,6 +141,7 @@ const HomeScreen = () => {
                 <ScrollView horizontal={true} 
                     showsHorizontalScrollIndicator={false} >
                     <View style={style.productCard}> 
+                      <View style={style.likedPart} >
                        <Image 
                         source ={require('../../assets/icons/like.png')}
                         resizeMode ='contain'
@@ -148,10 +149,10 @@ const HomeScreen = () => {
                             width:20,
                             height : 20,
                             tintColor :  Styles.PriColor,
-                            top : 10,
                             right :14,
                             flex : 1,
                         }} />
+                        </View>
                         <Image 
                             source ={require('../../assets/images/burger.png')}
                             resizeMode ='contain'
@@ -161,19 +162,23 @@ const HomeScreen = () => {
                                 height : 180,
                                 //tintColor :  '#FFF701',
                             }} />
+                            <Text style={style.prodName}>Burgar</Text>
+                            <Text style={style.subDetail}>Double cheese filled Burgar</Text>
+                            <Text style={style.priceView}>RS 1200</Text>
                     </View>
                     <View style={style.productCard}> 
+                    <View style={style.likedPart} >
                        <Image 
                         source ={require('../../assets/icons/like.png')}
                         resizeMode ='contain'
                         style = {{
                             width:20,
                             height : 20,
-                            tintColor :  Styles.SecondaryColor,
-                            top : 10,
+                            tintColor :  Styles.PriColor,
                             right :14,
                             flex : 1,
                         }} />
+                        </View>
                         <Image 
                             source ={require('../../assets/images/pizza_img.png')}
                             resizeMode ='contain'
@@ -183,19 +188,23 @@ const HomeScreen = () => {
                                 height : 180,
                                 //tintColor :  '#FFF701',
                             }} />
+                            <Text style={style.prodName}>Burgar</Text>
+                            <Text style={style.subDetail}>Double cheese filled Burgar</Text>
+                            <Text style={style.priceView}>RS 1200</Text>
                     </View>
                     <View style={style.productCard}> 
-                       <Image 
-                        source ={require('../../assets/icons/like.png')}
-                        resizeMode ='contain'
-                        style = {{
-                            width:20,
-                            height : 20,
-                            tintColor :  Styles.SecondaryColor,
-                            top : 10,
-                            right :14,
-                            flex : 1,
-                        }} />
+                        <View style={style.likedPart} >
+                        <Image 
+                            source ={require('../../assets/icons/like.png')}
+                            resizeMode ='contain'
+                            style = {{
+                                width:20,
+                                height : 20,
+                                tintColor :  Styles.PriColor,
+                                right :14,
+                                flex : 1,
+                            }} />
+                            </View>
                         <Image 
                             source ={require('../../assets/images/pizza_img.png')}
                             resizeMode ='contain'
@@ -204,6 +213,9 @@ const HomeScreen = () => {
                                 marginHorizontal:'5%',
                                 height : 180,
                             }} />
+                            <Text style={style.prodName}>Burgar</Text>
+                            <Text style={style.subDetail}>Double cheese filled Burgar</Text>
+                            <Text style={style.priceView}>RS 1200</Text>
                     </View>
                 </ScrollView>
             </View>
@@ -217,6 +229,7 @@ const HomeScreen = () => {
                 <ScrollView horizontal={true} 
                     showsHorizontalScrollIndicator={false} >
                     <View style={style.productCard}> 
+                       <View style={style.likedPart} >
                        <Image 
                         source ={require('../../assets/icons/like.png')}
                         resizeMode ='contain'
@@ -224,10 +237,10 @@ const HomeScreen = () => {
                             width:20,
                             height : 20,
                             tintColor :  Styles.PriColor,
-                            top : 10,
                             right :14,
                             flex : 1,
                         }} />
+                        </View>
                         <Image 
                         source ={require('../../assets/images/burger.png')}
                         resizeMode ='contain'
@@ -236,19 +249,23 @@ const HomeScreen = () => {
                             marginHorizontal:'5%',
                             height : 180,
                         }} />
+                        <Text style={style.prodName}>Burgar</Text>
+                            <Text style={style.subDetail}>Double cheese filled Burgar</Text>
+                            <Text style={style.priceView}>RS 1200</Text>
                     </View>
                     <View style={style.productCard}> 
-                      <Image 
+                       <View style={style.likedPart} >
+                       <Image 
                         source ={require('../../assets/icons/like.png')}
                         resizeMode ='contain'
                         style = {{
                             width:20,
                             height : 20,
                             tintColor :  Styles.PriColor,
-                            top : 10,
                             right :14,
                             flex : 1,
                         }} />
+                        </View>
                         <Image 
                             source ={require('../../assets/images/pizza_img.png')}
                             resizeMode ='contain'
@@ -257,19 +274,23 @@ const HomeScreen = () => {
                                 marginHorizontal:'5%',
                                 height : 180,
                             }} />
+                            <Text style={style.prodName}>Burgar</Text>
+                            <Text style={style.subDetail}>Double cheese filled Burgar</Text>
+                            <Text style={style.priceView}>RS 1200</Text>
                     </View>
                     <View style={style.productCard}> 
-                        <Image 
+                       <View style={style.likedPart} >
+                       <Image 
                         source ={require('../../assets/icons/like.png')}
                         resizeMode ='contain'
                         style = {{
                             width:20,
                             height : 20,
                             tintColor :  Styles.PriColor,
-                            top : 10,
                             right :14,
                             flex : 1,
                         }} />
+                        </View>
                         <Image 
                             source ={require('../../assets/images/pizza_img.png')}
                             resizeMode ='contain'
@@ -278,8 +299,126 @@ const HomeScreen = () => {
                                 marginHorizontal:'5%',
                                 height : 180,
                             }} />
+                            <Text style={style.prodName}>Burgar</Text>
+                            <Text style={style.subDetail}>Double cheese filled Burgar</Text>
+                            <Text style={style.priceView}>RS 1200</Text>
                     </View>
                 </ScrollView>
+            </View>
+        )
+    }
+
+    const foodList = () => {
+        return(
+            <View style={{ paddingHorizontal:10 }} >
+            <Text style={{fontSize:20,fontWeight:'900'}}>Food Listing</Text>
+            <ScrollView  >
+                <View style={style.productVericalCard}> 
+                   <View style={style.likedPart} >
+                   <Image 
+                    source ={require('../../assets/icons/like.png')}
+                    resizeMode ='contain'
+                    style = {{
+                        width:20,
+                        height : 20,
+                        tintColor :  Styles.PriColor,
+                        right :14,
+                        flex : 1,
+                    }} />
+                    </View>
+                    <Image 
+                    source ={require('../../assets/images/burger.png')}
+                    resizeMode ='contain'
+                    style = {{
+                        width:'90%',
+                        marginHorizontal:'5%',
+                        height : 180,
+                    }} />
+                    <Text style={style.prodName}>Burgar</Text>
+                        <Text style={style.subDetail}>Double cheese filled Burgar</Text>
+                        <Text style={style.priceView}>RS 1200</Text>
+                </View>
+                <View style={style.productVericalCard}> 
+                   <View style={style.likedPart} >
+                   <Image 
+                    source ={require('../../assets/icons/like.png')}
+                    resizeMode ='contain'
+                    style = {{
+                        width:20,
+                        height : 20,
+                        tintColor :  Styles.PriColor,
+                        right :14,
+                        flex : 1,
+                    }} />
+                    </View>
+                    <Image 
+                        source ={require('../../assets/images/pizza_img.png')}
+                        resizeMode ='contain'
+                        style = {{
+                            width:'90%',
+                            marginHorizontal:'5%',
+                            height : 180,
+                        }} />
+                        <Text style={style.prodName}>Burgar</Text>
+                        <Text style={style.subDetail}>Double cheese filled Burgar</Text>
+                        <Text style={style.priceView}>RS 1200</Text>
+                </View>
+                <View style={style.productVericalCard}> 
+                   <View style={style.likedPart} >
+                   <Image 
+                    source ={require('../../assets/icons/like.png')}
+                    resizeMode ='contain'
+                    style = {{
+                        width:20,
+                        height : 20,
+                        tintColor :  Styles.PriColor,
+                        right :14,
+                        flex : 1,
+                    }} />
+                    </View>
+                    <Image 
+                        source ={require('../../assets/images/pizza_img.png')}
+                        resizeMode ='contain'
+                        style = {{
+                            width:'90%',
+                            marginHorizontal:'5%',
+                            height : 180,
+                        }} />
+                        <Text style={style.prodName}>Burgar</Text>
+                        <Text style={style.subDetail}>Double cheese filled Burgar</Text>
+                        <Text style={style.priceView}>RS 1200</Text>
+                </View>
+            </ScrollView>
+        </View>
+        )
+    }
+
+    const bannerDisp = () => {
+        return(
+            <View style={{ height:200 }}>
+                <Image 
+                        source ={require('../../assets/images/banner.jpg')}
+                        resizeMode ='contain'
+                        style = {{
+                            width:'98%',
+                            marginHorizontal:'1%',
+                            height : 180,
+                        }} />
+            </View>
+        )
+    }
+
+    const bannerDispMid = () => {
+        return(
+            <View style={{ height:200 }}>
+                <Image 
+                        source ={require('../../assets/images/banner1.jpeg')}
+                        resizeMode ='contain'
+                        style = {{
+                            width:'98%',
+                            marginHorizontal:'1%',
+                            height : 180,
+                        }} />
             </View>
         )
     }
@@ -295,8 +434,11 @@ const HomeScreen = () => {
              <Header />
             <ScrollView style = { style.scrollPart} >
                 {categoryView()}
+                {bannerDisp()}
                 {popularProducts()}
+                {bannerDispMid()}
                 {featuredProducts()}
+                {foodList()}
                 {padBelow()}
             </ScrollView>
         </SafeAreaView>
@@ -308,15 +450,50 @@ const style = StyleSheet.create({
         width : ScreenDisp.WidthFull,
     },
     productCard : {
-        height : 200,
-        width : 150,
+        height : 300,
+        width : 200,
         marginRight : 15,
         marginVertical : 15,
         backgroundColor : '#fff',
         borderRadius: 10,
-        alignItems: "flex-end",
+        alignItems: "flex-start",
         justifyContent: "center",
     },
+    productVericalCard : {
+        height : 340,
+        width : '90%',
+        marginTop : 15,
+        marginHorizontal : '5%',
+        backgroundColor : '#fff',
+        borderRadius: 10,
+        alignItems: "flex-start",
+        justifyContent: "center",
+    },
+    likedPart : {
+        width : ScreenDisp.WidthFull,
+        alignItems: "flex-end",
+        flex : 1,
+    },
+    proData : {
+        width : ScreenDisp.WidthFull,
+        height : 40,
+    },
+    prodName : {
+        marginHorizontal:15,
+        fontWeight : '900',
+        letterSpacing : 1,
+        color : Styles.TextHeading,
+    },
+    priceView : {
+        marginHorizontal : 15,
+        marginTop : 4,
+        marginBottom : 20,
+    },
+    subDetail : {
+        fontSize : 10,
+        marginLeft : 15,
+        color : Styles.SubText,
+    }
 })
 
 export default HomeScreen

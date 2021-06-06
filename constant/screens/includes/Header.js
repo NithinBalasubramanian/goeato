@@ -33,7 +33,7 @@ const Header = () => {
                         style = {{
                             width:20,
                             height : 20,
-                            tintColor :  '#000000',
+                            tintColor :  Styles.SecondaryColor,
                             marginTop:15,
                             marginLeft:15,
                         }}
@@ -46,7 +46,7 @@ const Header = () => {
                         style = {{
                             width:20,
                             height : 20,
-                            tintColor :  '#000000',
+                            tintColor :  Styles.SecondaryColor,
                             marginTop:15,
                             marginLeft:0,
                         }}

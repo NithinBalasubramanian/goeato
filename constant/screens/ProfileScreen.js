@@ -9,13 +9,13 @@ import { Styles , ScreenDisp } from '../../assets/style/theme'
 
 import Header from './includes/Header'
 
-const OrderScreen = () => {
+const ProfileScreen = () => {
     return(
         <SafeAreaView style = { style.midView }>
              <Header />
             <ScrollView style = { style.scrollPart} >
                 <View style = { style.midView }>
-                    <Text>Order</Text>
+                    <Text>Profile</Text>
                 </View>
             </ScrollView>
         </SafeAreaView>
@@ -28,4 +28,4 @@ const style = StyleSheet.create({
     },
 })
 
-export default OrderScreen
+export default ProfileScreen

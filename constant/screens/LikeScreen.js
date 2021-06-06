@@ -9,10 +9,10 @@ import { Styles , ScreenDisp } from '../../assets/style/theme'
 
 import Header from './includes/Header'
 
-const popularScroll = () => {
+const favorateScroll = () => {
     return(
         <View style={{ paddingHorizontal:10  }}>
-           <Text style={{fontSize:20,fontWeight:'900'}}> Popular Restaurants</Text>
+           <Text style={{fontSize:20,fontWeight:'900'}}> Liked Restaurants</Text>
            <ScrollView horizontal={true} 
                     showsHorizontalScrollIndicator={false} >
                     <View style={style.productCard}> 
@@ -58,52 +58,88 @@ const popularScroll = () => {
     )
 }
 
-const favorateScroll = () => {
+const likedList = () => {
     return(
-        <View style={{ paddingHorizontal:10  }}>
-           <Text style={{fontSize:20,fontWeight:'900'}}> Favorate Restaurants</Text>
-           <ScrollView horizontal={true} 
-                    showsHorizontalScrollIndicator={false} >
-                    <View style={style.productCard}> 
-                        <Image 
-                            source ={require('../../assets/images/restaurant3.jpg')}
-                            resizeMode ='contain'
-                            style = {{
-                                width:'90%',
-                                marginHorizontal:'5%',
-                                height : 180,
-                                //tintColor :  '#FFF701',
-                            }} />
-                            <Text style={style.prodName}>MC Donals</Text>
-                            <Text style={style.subDetail}>Taste to heart</Text>
-                    </View>
-                    <View style={style.productCard}> 
-                        <Image 
-                            source ={require('../../assets/images/restaurant2.jpeg')}
-                            resizeMode ='contain'
-                            style = {{
-                                width:'90%',
-                                marginHorizontal:'5%',
-                                height : 180,
-                                //tintColor :  '#FFF701',
-                            }} />
-                            <Text style={style.prodName}>Restaurant</Text>
-                            <Text style={style.subDetail}>Double cheese filled Burgar</Text>
-                    </View>
-                    <View style={style.productCard}> 
-                        <Image 
-                            source ={require('../../assets/images/restaurant1.jpeg')}
-                            resizeMode ='contain'
-                            style = {{
-                                width:'90%',
-                                marginHorizontal:'5%',
-                                height : 180,
-                            }} />
-                            <Text style={style.prodName}>Tndian</Text>
-                            <Text style={style.subDetail}>Double cheese filled Burgar</Text>
-                    </View>
-                </ScrollView>
-        </View>
+        <View style={{ paddingHorizontal:10 }} >
+        <Text style={{fontSize:20,fontWeight:'900'}}> Liked Food</Text>
+        <ScrollView  >
+            <View style={style.productVericalCard}> 
+               <View style={style.likedPart} >
+               <Image 
+                source ={require('../../assets/icons/like.png')}
+                resizeMode ='contain'
+                style = {{
+                    width:20,
+                    height : 20,
+                    tintColor :  Styles.PriColor,
+                    right :14,
+                    flex : 1,
+                }} />
+                </View>
+                <Image 
+                source ={require('../../assets/images/burger.png')}
+                resizeMode ='contain'
+                style = {{
+                    width:'90%',
+                    marginHorizontal:'5%',
+                    height : 180,
+                }} />
+                <Text style={style.prodName}>Burgar</Text>
+                    <Text style={style.subDetail}>Double cheese filled Burgar</Text>
+                    <Text style={style.priceView}>RS 1200</Text>
+            </View>
+            <View style={style.productVericalCard}> 
+               <View style={style.likedPart} >
+               <Image 
+                source ={require('../../assets/icons/like.png')}
+                resizeMode ='contain'
+                style = {{
+                    width:20,
+                    height : 20,
+                    tintColor :  Styles.PriColor,
+                    right :14,
+                    flex : 1,
+                }} />
+                </View>
+                <Image 
+                    source ={require('../../assets/images/pizza_img.png')}
+                    resizeMode ='contain'
+                    style = {{
+                        width:'90%',
+                        marginHorizontal:'5%',
+                        height : 180,
+                    }} />
+                    <Text style={style.prodName}>Burgar</Text>
+                    <Text style={style.subDetail}>Double cheese filled Burgar</Text>
+                    <Text style={style.priceView}>RS 1200</Text>
+            </View>
+            <View style={style.productVericalCard}> 
+               <View style={style.likedPart} >
+               <Image 
+                source ={require('../../assets/icons/like.png')}
+                resizeMode ='contain'
+                style = {{
+                    width:20,
+                    height : 20,
+                    tintColor :  Styles.PriColor,
+                    right :14,
+                    flex : 1,
+                }} />
+                </View>
+                <Image 
+                    source ={require('../../assets/images/pizza_img.png')}
+                    resizeMode ='contain'
+                    style = {{
+                        width:'90%',
+                        marginHorizontal:'5%',
+                        height : 180,
+                    }} />
+                    <Text style={style.prodName}>Burgar</Text>
+                    <Text style={style.subDetail}>Double cheese filled Burgar</Text>
+                    <Text style={style.priceView}>RS 1200</Text>
+            </View>
+        </ScrollView>
+    </View>
     )
 }
 
@@ -113,13 +149,13 @@ const padBelow = () => {
     )
 }
 
-const Restaurant = () => {
+const LikeScreen = () => {
     return(
         <SafeAreaView style = { style.midView }>
              <Header />
             <ScrollView style = { style.scrollPart} >
-                {popularScroll()}
                 {favorateScroll()}
+                {likedList()}
                 {padBelow()}
             </ScrollView>
         </SafeAreaView>
@@ -180,5 +216,4 @@ const style = StyleSheet.create({
     }
 })
 
-
-export default Restaurant
+export default LikeScreen
