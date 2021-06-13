@@ -1,75 +1,87 @@
-import React from 'react';
-import { StyleSheet, Text, View , SafeAreaView ,FlatList ,TouchableOpacity , Image , ScrollView} from 'react-native';
+import React , { useEffect } from 'react';
+import { StyleSheet, Text, View , SafeAreaView ,FlatList ,TouchableOpacity , TouchableHighlight ,Image , ScrollView ,TextInput } from 'react-native';
+
+import * as Font from 'expo-font';
+
+import { useFonts } from 'expo-font';
+
 
 
 //Styles
 
 import { Styles , ScreenDisp } from '../../assets/style/theme'
 
-//pages
 
-import Header from './includes/Header'
-
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
 
         const categoryData = [
         {
             id: 1,
-            name: "Rice",
-            icon: "../../../assets/images/pizza.jpg",
+            name: "Burgar",
+            icon: "../../assets/images/burgar.jpg",
         },
         {
             id: 2,
-            name: "Noodles",
-            icon: "../../../assets/images/noodle.png",
+            name: "Desert",
+            icon: "../../assets/images/dessert.png",
         },
         {
             id: 3,
-            name: "Hot Dogs",
-            icon: "../../../assets/images/hotdog.png",
+            name: "Drinks",
+            icon: "../../assets/images/drinks.jpeg",
         },
         {
             id: 4,
-            name: "Salads",
-            icon: "../../../assets/images/hotdog.png",
+            name: "Hot dog",
+            icon: "../../assets/images/hot dog.png",
         },
         {
             id: 5,
-            name: "Burgers",
-            icon: "../../../assets/images/hotdog.png",
+            name: "Noodles",
+            icon: "../../assets/images/noodles.png",
         },
         {
             id: 6,
             name: "Pizza",
-            icon: "../../../assets/images/hotdog.png",
+            icon: "../../assets/images/pizza.png",
         },
         {
             id: 7,
-            name: "Snacks",
-            icon: "../../../assets/images/hotdog.png",
+            name: "Rice",
+            icon: "../../assets/images/pizza.png",
         },
         {
             id: 8,
-            name: "Sushi",
-            icon: "../../../assets/images/hotdog.png",
+            name: "Salads",
+            icon: "../../assets/images/salads.png",
         },
         {
             id: 9,
             name: "Desserts",
-            icon: "../../../assets/images/hotdog.png",
-        },
-        {
-            id: 10,
-            name: "Drinks",
-            icon: "../../../assets/images/hotdog.png",
-        },
+            icon: "../../assets/images/hot dog.png",
+        }
 
     ]
 
 
 
+
+
     const [categories, setCategories] = React.useState(categoryData)
     const [selectedCategory, setSelectedCategory] = React.useState(null)
+
+    const searchBar = () => {
+        return(
+            <View style={style.searchSection}>
+                {/* <Icon style={style.searchIcon} name="magnifying-glass" size={20} color="#000"/> */}
+                <TextInput
+                    style={style.input}
+                    placeholder="Search"
+                    underlineColorAndroid="transparent"
+                />
+            </View>
+        )
+    }
 
     const categoryView = () => {
 
@@ -98,11 +110,12 @@ const HomeScreen = () => {
                         }}
                     >
                         <Image
-                            source="../../../assets/images/pizza.jpg"
+                            source={item.icon}
                             resizeMode="contain"
                             style={{
                                 width: 30,
                                 height: 30,
+                                //tintColor : 'red'
                             }}
                         />
                     </View>
@@ -134,38 +147,40 @@ const HomeScreen = () => {
         )
     }
 
-    const popularProducts = () => {
+    const popularProducts = (navigation) => {
         return(
             <View style={{ paddingHorizontal:10 }} >
                 <Text style={{fontSize:20,fontWeight:'900'}}>Store 99</Text>
                 <ScrollView horizontal={true} 
                     showsHorizontalScrollIndicator={false} >
-                    <View style={style.productCard}> 
-                      <View style={style.likedPart} >
-                       <Image 
-                        source ={require('../../assets/icons/like.png')}
-                        resizeMode ='contain'
-                        style = {{
-                            width:20,
-                            height : 20,
-                            tintColor :  Styles.PriColor,
-                            right :14,
-                            flex : 1,
-                        }} />
-                        </View>
+                    <TouchableOpacity onPress={() => navigation.navigate("FoodView") }>
+                        <View style={style.productCard}> 
+                        <View style={style.likedPart} >
                         <Image 
-                            source ={require('../../assets/images/burger.png')}
+                            source ={require('../../assets/icons/like.png')}
                             resizeMode ='contain'
                             style = {{
-                                width:'90%',
-                                marginHorizontal:'5%',
-                                height : 180,
-                                //tintColor :  '#FFF701',
+                                width:20,
+                                height : 20,
+                                tintColor :  Styles.PriColor,
+                                right :14,
+                                flex : 1,
                             }} />
-                            <Text style={style.prodName}>Burgar</Text>
-                            <Text style={style.subDetail}>Double cheese filled Burgar</Text>
-                            <Text style={style.priceView}>RS 1200</Text>
-                    </View>
+                            </View>
+                            <Image 
+                                source ={require('../../assets/images/burger.png')}
+                                resizeMode ='contain'
+                                style = {{
+                                    width:'90%',
+                                    marginHorizontal:'5%',
+                                    height : 180,
+                                    //tintColor :  '#FFF701',
+                                }} />
+                                <Text style={style.prodName}>Burgar</Text>
+                                <Text style={style.subDetail}>Double cheese filled Burgar</Text>
+                                <Text style={style.priceView}>RS 1200</Text>
+                        </View>
+                    </TouchableOpacity>
                     <View style={style.productCard}> 
                     <View style={style.likedPart} >
                        <Image 
@@ -425,17 +440,17 @@ const HomeScreen = () => {
 
     const padBelow = () => {
         return(
-            <View style={{ height:160 }}></View>
+            <View style={{ height:100 }}></View>
         )
     }
 
     return(
         <SafeAreaView style = { style.midView }>
-             <Header />
             <ScrollView style = { style.scrollPart} >
+                {searchBar()}
                 {categoryView()}
                 {bannerDisp()}
-                {popularProducts()}
+                {popularProducts(navigation)}
                 {bannerDispMid()}
                 {featuredProducts()}
                 {foodList()}
@@ -448,6 +463,7 @@ const HomeScreen = () => {
 const style = StyleSheet.create({
     midView : {
         width : ScreenDisp.WidthFull,
+       // fontFamily : 'CrimsonText-SemiBold',
     },
     productCard : {
         height : 300,
@@ -493,7 +509,30 @@ const style = StyleSheet.create({
         fontSize : 10,
         marginLeft : 15,
         color : Styles.SubText,
-    }
+    },
+    searchSection: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#fff',
+        margin:15,
+        paddingLeft:15,
+        borderRadius : 5,
+        letterSpacing : 1,
+    },
+    searchIcon: {
+        padding: 10,
+    },
+    input: {
+        flex: 1,
+        paddingTop: 10,
+        paddingRight: 10,
+        paddingBottom: 10,
+        paddingLeft: 0,
+        backgroundColor: '#fff',
+        color: '#424242',
+    },
 })
 
 export default HomeScreen

@@ -5,9 +5,6 @@ import { StyleSheet, Text, View ,SafeAreaView ,ScrollView , Image} from 'react-n
 
 import { Styles , ScreenDisp } from '../../assets/style/theme'
 
-//pages
-
-import Header from './includes/Header'
 
 const favorateScroll = () => {
     return(
@@ -152,7 +149,6 @@ const padBelow = () => {
 const LikeScreen = () => {
     return(
         <SafeAreaView style = { style.midView }>
-             <Header />
             <ScrollView style = { style.scrollPart} >
                 {favorateScroll()}
                 {likedList()}

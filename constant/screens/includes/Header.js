@@ -1,11 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View , StyleSheet , Text ,Image ,TouchableOpacity ,FlatList} from 'react-native';
 
 //Styles
 
 import { Styles , ScreenDisp } from '../../../assets/style/theme'
+import * as Font from 'expo-font';
 
-const Header = () => {
+import { useFonts } from 'expo-font';
+
+
+const Header = ({ onFunction , onDiscount }) => {
+
+    const [loaded] = useFonts({
+        'Merriweather-Regular' : require('../../../assets/fonts/Merriweather-Regular.ttf'),
+      });
+      
+      if (!loaded) {
+        return null;
+      }
+
+//     useEffect(()=>{
+//         await Font.loadAsync({
+//             'Merriweather-Regular' : require('../../../assets/fonts/Merriweather-Regular.ttf')
+//         })
+//    },[]);
 
     
     return(
@@ -26,7 +44,7 @@ const Header = () => {
             <View style={style.logoPart}>
                 <Text style={style.logoText}>Goeato</Text>
             </View>
-            <TouchableOpacity style={{ width : '15%', height:50,marginTop:25,}}> 
+            {/* <TouchableOpacity style={{ width : '15%', height:50,marginTop:25,}} onPress={onDiscount}> 
                     <Image 
                         source ={require('../../../assets/icons/discount.png')}
                         resizeMode ='contain'
@@ -36,10 +54,11 @@ const Header = () => {
                             tintColor :  Styles.SecondaryColor,
                             marginTop:15,
                             marginLeft:15,
+                            tintColor : 'red'
                         }}
                     ></Image>
-            </TouchableOpacity>
-            <TouchableOpacity style={{ width : '15%', height:50,marginTop:25,}}> 
+            </TouchableOpacity> */}
+            <TouchableOpacity style={{ width : '15%', height:50,marginTop:25,}} onPress={onFunction} >
                      <Image 
                         source ={require('../../../assets/icons/notification.png')}
                         resizeMode ='contain'
@@ -65,7 +84,7 @@ const style = StyleSheet.create({
         elevation : 1,
     },
     logoPart : {
-        width : '62%',
+        width : '72%',
         margin: 20,
         height : 60,
         // alignItems:'center',
@@ -76,6 +95,7 @@ const style = StyleSheet.create({
         fontSize:28,
         fontWeight : '900',
         marginTop:10,
+        fontFamily : 'Merriweather-Regular',
     }
 })
 

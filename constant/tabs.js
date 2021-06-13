@@ -9,6 +9,7 @@ import { Styles , ScreenDisp } from '../assets/style/styles'
 
 //pages
 
+import Header from './screens/includes/Header'
 import HomeScreen from './screens/Homescreen'
 import OrderScreen from './screens/Orderscreen'
 import Restaurant from './screens/RestaurantScreen'
@@ -36,9 +37,19 @@ const CustomTab = ({children , onPress }) => (
     </TouchableOpacity>
 );
 
-const Tabs = () => {
+const Tabs = ({ navigation }) => {
+
+    const navigationFunction = () => {
+         navigation.navigate("Notification");
+    }
+
+    const discountFunction = () => {
+        navigation.navigate("Discount");
+   }
 
     return(
+        <>
+        <Header onFunction={navigationFunction} onDiscount={ discountFunction } />
         <Tab.Navigator
          tabBarOptions={{
              showLabel : false,
@@ -55,7 +66,7 @@ const Tabs = () => {
              }
          }}
         >
-        <Tab.Screen name="Home" component={HomeScreen} options={{
+        <Tab.Screen name="Home" component={HomeScreen}  options={{
             tabBarIcon : ({focused}) => (
                 <View style={style.navIcon }>
                     <Image 
@@ -132,6 +143,7 @@ const Tabs = () => {
             ),
         }}/>
       </Tab.Navigator>
+      </>
     )
 }
 
