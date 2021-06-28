@@ -1,105 +1,54 @@
-import React from 'react';
-import { StyleSheet, Text, View ,SafeAreaView ,ScrollView , Image} from 'react-native';
+import React , { useEffect , useState } from 'react';
+import { StyleSheet, Text, View ,SafeAreaView ,ScrollView , Image , FlatList } from 'react-native';
+import axios from 'axios'
 
 //Styles
 
 import { Styles , ScreenDisp } from '../../assets/style/theme'
 
+const initialState = [
+    {
+        'restaurant' : '',
+        'quote' : '',
+        'img' : '',
+        'address' : '',
+    }
+]
 
-const popularScroll = () => {
-    return(
-        <View style={{ paddingHorizontal:10  }}>
-           <Text style={{fontSize:20,fontWeight:'900'}}> Popular Restaurants</Text>
-           <ScrollView horizontal={true} 
-                    showsHorizontalScrollIndicator={false} >
-                    <View style={style.productCard}> 
-                        <Image 
-                            source ={require('../../assets/images/restaurant3.jpg')}
-                            resizeMode ='contain'
-                            style = {{
-                                width:'90%',
-                                marginHorizontal:'5%',
-                                height : 180,
-                                //tintColor :  '#FFF701',
-                            }} />
-                            <Text style={style.prodName}>MC Donals</Text>
-                            <Text style={style.subDetail}>Taste to heart</Text>
-                    </View>
-                    <View style={style.productCard}> 
-                        <Image 
-                            source ={require('../../assets/images/restaurant2.jpeg')}
-                            resizeMode ='contain'
-                            style = {{
-                                width:'90%',
-                                marginHorizontal:'5%',
-                                height : 180,
-                                //tintColor :  '#FFF701',
-                            }} />
-                            <Text style={style.prodName}>Restaurant</Text>
-                            <Text style={style.subDetail}>Double cheese filled Burgar</Text>
-                    </View>
-                    <View style={style.productCard}> 
-                        <Image 
-                            source ={require('../../assets/images/restaurant1.jpeg')}
-                            resizeMode ='contain'
-                            style = {{
-                                width:'90%',
-                                marginHorizontal:'5%',
-                                height : 180,
-                            }} />
-                            <Text style={style.prodName}>Tndian</Text>
-                            <Text style={style.subDetail}>Double cheese filled Burgar</Text>
-                    </View>
-                </ScrollView>
-        </View>
-    )
+const popularScroll = ({ item }) => {
+
+        return(
+            <View style={style.productCard}> 
+                <Image 
+                    source = {{ uri : item.img }}
+                    resizeMode ='contain'
+                    style = {{
+                        width:'90%',
+                        marginHorizontal:'5%',
+                        height : 180,
+                        //tintColor :  '#FFF701',
+                    }} />
+                    <Text style={style.prodName}>{ item.name }</Text>
+                    <Text style={style.subDetail}>{ item.address }</Text>
+            </View>
+        )
 }
 
-const favorateScroll = () => {
+const favorateScroll = ({ item }) => {
+
     return(
-        <View style={{ paddingHorizontal:10  }}>
-           <Text style={{fontSize:20,fontWeight:'900'}}> Favorate Restaurants</Text>
-           <ScrollView horizontal={true} 
-                    showsHorizontalScrollIndicator={false} >
-                    <View style={style.productCard}> 
-                        <Image 
-                            source ={require('../../assets/images/restaurant3.jpg')}
-                            resizeMode ='contain'
-                            style = {{
-                                width:'90%',
-                                marginHorizontal:'5%',
-                                height : 180,
-                                //tintColor :  '#FFF701',
-                            }} />
-                            <Text style={style.prodName}>MC Donals</Text>
-                            <Text style={style.subDetail}>Taste to heart</Text>
-                    </View>
-                    <View style={style.productCard}> 
-                        <Image 
-                            source ={require('../../assets/images/restaurant2.jpeg')}
-                            resizeMode ='contain'
-                            style = {{
-                                width:'90%',
-                                marginHorizontal:'5%',
-                                height : 180,
-                                //tintColor :  '#FFF701',
-                            }} />
-                            <Text style={style.prodName}>Restaurant</Text>
-                            <Text style={style.subDetail}>Double cheese filled Burgar</Text>
-                    </View>
-                    <View style={style.productCard}> 
-                        <Image 
-                            source ={require('../../assets/images/restaurant1.jpeg')}
-                            resizeMode ='contain'
-                            style = {{
-                                width:'90%',
-                                marginHorizontal:'5%',
-                                height : 180,
-                            }} />
-                            <Text style={style.prodName}>Tndian</Text>
-                            <Text style={style.subDetail}>Double cheese filled Burgar</Text>
-                    </View>
-                </ScrollView>
+        <View style={style.productCard}> 
+            <Image 
+                source = {{ uri : item.img }}
+                resizeMode ='contain'
+                style = {{
+                    width:'90%',
+                    marginHorizontal:'5%',
+                    height : 180,
+                    //tintColor :  '#FFF701',
+                }} />
+                <Text style={style.prodName}>{ item.name }</Text>
+                <Text style={style.subDetail}>{ item.address }</Text>
         </View>
     )
 }
@@ -111,12 +60,42 @@ const padBelow = () => {
 }
 
 const Restaurant = () => {
+
+    let [ data , setData ] = useState(initialState);
+
+    useEffect(() => {
+        axios.get('https://goeato.com/Api/fetchRestaurant')
+             .then((res) => {
+                setData(res.data);
+                setfavorateData(res.data);
+             }).catch((err) => {
+                 console.log(err);
+             })
+    },[])
+
     return(
         <SafeAreaView style = { style.midView }>
             <ScrollView style = { style.scrollPart} >
-                {popularScroll()}
-                {favorateScroll()}
-                {padBelow()}
+             <View style={{ paddingHorizontal:10  }}>
+               <Text style={{fontSize:20,fontWeight:'900'}}> Popular Restaurants</Text>
+                    <FlatList  
+                        horizontal 
+                        showsHorizontalScrollIndicator={false}  data={ data }
+                        keyExtractor={item => `${item._id}`}
+                        renderItem={popularScroll}
+                        contentContainerStyle={{ paddingVertical: 10 }} 
+                    />
+                    
+                <Text style={{fontSize:20,fontWeight:'900'}}> Favorate Restaurants</Text>
+                    <FlatList  
+                        horizontal 
+                        showsHorizontalScrollIndicator={false}  data={ data }
+                        keyExtractor={item => `${item._id}`}
+                        renderItem={favorateScroll}
+                        contentContainerStyle={{ paddingVertical: 10 }} 
+                    />
+                    {padBelow()}
+                </View>
             </ScrollView>
         </SafeAreaView>
     )
